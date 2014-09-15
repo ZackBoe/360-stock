@@ -3,35 +3,48 @@ var action = {};
 /////////////////////////////////////////////////////////////////////
 // metadata
 action.name = 'stock';
-action.description = 'I will test the internal cache functions of the API';
+action.description = 'Returns stock availability';
 action.inputs = {
     'required' : [],
     'optional' : []
 };
 action.blockedConnectionTypes = [];
 action.outputExample = {
-    cacheTestResults: {
-        key: 'key',
-        value: 'value',
-        saveResp: 'OK',
-        loadResp: 'OK',
-        deleteResp: 'OK'
+    google: {
+      black: { available: false },
+      silver: { available: false }
+    },
+    moto: {
+      black: { available: false },
+      silver: { available: false }
+    },
+    bby: {
+      black:{
+        available: {
+          inStoreAvailability: false,
+          onlineAvailability: false
+        }
+      },
+      silver:{
+        available: {
+          inStoreAvailability: false,
+          onlineAvailability: false
+        }
+      }
     }
 }
 
 /////////////////////////////////////////////////////////////////////
 // functional
 action.run = function(api, connection, next){
-    var key = 'google_black';
-    var value = false;
 
     connection.response.stock = {};
+    connection.response.stock.google = {};
+    connection.response.stock.moto = {};
+    connection.response.stock.bby = {};
 
     api.cache.load('google_black', function(err, resp, expireTimestamp, createdAt, readAt){
-        connection.response.stock.google.black = {
-            available: resp, updatedAt: createdAt
-        }
-        next(connection, true);
+        connection.response.stock.google.black = { available: resp, updatedAt: createdAt }
     });
 
     api.cache.load('google_silver', function(err, resp, expireTimestamp, createdAt, readAt){
@@ -52,14 +65,8 @@ action.run = function(api, connection, next){
 
     api.cache.load('bby_silver', function(err, resp, expireTimestamp, createdAt, readAt){
         connection.response.stock.bby.silver =  { available: resp, updatedAt: createdAt }
+        next(connection, true);
     });
-
-
-
-
-    connection.response.stock.google = {};
-    connection.response.stock.moto = {};
-    connection.response.stock.bby = {};
 
 };
 
