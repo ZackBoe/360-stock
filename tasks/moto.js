@@ -13,8 +13,6 @@ exports.task = {
       if (!error && response.statusCode == 200) {
         var cleaned = body.replace(api.config.keys.motoregex);
         data = JSON.parse(cleaned);
-        api.log(data.variants[0].availability);
-        api.log(data.variants[1].availability);
 
         if(data.variants[0].availability == 'NOT_AVAILABLE') api.cache.save('moto_black', false);
         else api.cache.save('moto_black', true);
