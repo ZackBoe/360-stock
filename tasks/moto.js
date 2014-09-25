@@ -9,9 +9,9 @@ exports.task = {
   run: function(api, params, next){
     var request = require('request');
 
-    request({url:api.config.secrets.moto.url, qs:{cid: 'moto360-pdp-hero'}}, function (error, response, body) {
+    request({url:api.config.secrets.moto_url, qs:{cid: 'moto360-pdp-hero'}}, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        var cleaned = body.replace(api.config.secrets.moto.regex);
+        var cleaned = body.replace(api.config.secrets.moto_regex);
         data = JSON.parse(cleaned);
 
         if(data.variants[0].availability == 'NOT_AVAILABLE') api.cache.save('moto_black', false);

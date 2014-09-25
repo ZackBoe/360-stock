@@ -3,15 +3,11 @@ exports.default = {
     return {
         kimono: api.config.keys.kimono,
         bby: api.config.keys.bby,
-        moto: {
-          url: api.config.keys.moto.url,
-          regex: api.config.keys.moto.regex
-        },
-        redis: {
-          url: api.config.keys.redis.url,
-          port: api.config.keys.redis.port,
-          pass: api.config.keys.redis.pass
-        }
+        moto_url: api.config.keys.moto.url,
+        moto_regex: api.config.keys.moto.regex,
+        redis_url: api.config.keys.redis.url,
+        redis_port: api.config.keys.redis.port,
+        redis_pass: api.config.keys.redis.pass
     }
   }
 }
@@ -21,15 +17,11 @@ exports.production = {
     return {
         kimono: process.env.kimono,
         bby: process.env.bby,
-        moto: {
-          url: process.env.motourl,
-          regex: process.env.motoregex
-        },
-        redis: {
-          url: process.env.redisurl,
-          port: process.env.redisport,
-          pass: process.env.redispass
-        }
+        moto_url: process.env.motourl,
+        moto_regex: process.env.motoregex,
+        redis_url: process.env.redisurl,
+        redis_port: process.env.redisport,
+        redis_pass: process.env.redispass
     }
   }
 }
