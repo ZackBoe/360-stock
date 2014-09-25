@@ -1,5 +1,7 @@
 config/keys.js
 
+# Heroku Foreman
+.env
 
 # Logs
 logs

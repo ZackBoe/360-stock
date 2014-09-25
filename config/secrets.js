@@ -4,7 +4,7 @@ exports.default = {
         kimono: api.config.keys.kimono,
         bby: api.config.keys.bby,
         moto: {
-          request: api.config.keys.moto.request,
+          url: api.config.keys.moto.url,
           regex: api.config.keys.moto.regex
         },
         redis: {
@@ -22,7 +22,7 @@ exports.production = {
         kimono: process.env.kimono,
         bby: process.env.bby,
         moto: {
-          request: process.env.motorequest,
+          url: process.env.motourl,
           regex: process.env.motoregex
         },
         redis: {
