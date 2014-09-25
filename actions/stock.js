@@ -44,31 +44,31 @@ action.run = function(api, connection, next){
     connection.response.stock.bby = {};
 
     api.cache.load('google_black', function(err, resp, expireTimestamp, createdAt, readAt){
-        connection.response.stock.google.black = { available: resp, updatedAt: createdAt }
+        connection.response.stock.google.black = { available: resp, link: api.config.variants.google.black.link, updatedAt: createdAt }
     });
 
     api.cache.load('google_silver', function(err, resp, expireTimestamp, createdAt, readAt){
-        connection.response.stock.google.silver =  { available: resp, updatedAt: createdAt }
+        connection.response.stock.google.silver =  { available: resp, link: api.config.variants.google.silver.link, updatedAt: createdAt }
     });
 
     api.cache.load('moto_black', function(err, resp, expireTimestamp, createdAt, readAt){
-        connection.response.stock.moto.black =  { available: resp, updatedAt: createdAt }
+        connection.response.stock.moto.black =  { available: resp, link: api.config.variants.moto.link, updatedAt: createdAt }
     });
 
     api.cache.load('moto_stone', function(err, resp, expireTimestamp, createdAt, readAt){
-        connection.response.stock.moto.stone =  { available: resp, updatedAt: createdAt }
+        connection.response.stock.moto.stone =  { available: resp, link: api.config.variants.moto.link, updatedAt: createdAt }
     });
 
     api.cache.load('bby_black', function(err, resp, expireTimestamp, createdAt, readAt){
-        connection.response.stock.bby.black =  { available: resp, updatedAt: createdAt }
+        connection.response.stock.bby.black =  { available: resp, link: api.config.variants.bby.black.link, updatedAt: createdAt }
     });
 
     api.cache.load('bby_silver', function(err, resp, expireTimestamp, createdAt, readAt){
-      connection.response.stock.bby.silver =  { available: resp, updatedAt: createdAt }
+      connection.response.stock.bby.silver =  { available: resp, link: api.config.variants.bby.silver.link, updatedAt: createdAt }
     });
 
     api.cache.load('bby_stone', function(err, resp, expireTimestamp, createdAt, readAt){
-        connection.response.stock.bby.stone =  { available: resp, updatedAt: createdAt }
+        connection.response.stock.bby.stone =  { available: resp, link: api.config.variants.bby.stone.link, updatedAt: createdAt }
         next(connection, true);
     });
 
