@@ -1751,7 +1751,17 @@ if(typeof Primus === 'undefined'){
 }
 
 actionheroClient.prototype.defaults = function(){
-  return { apiPath: '/api' }
+  return { apiPath: '/api',
+  reconnect: {},
+  timeout: 10000,
+  ping: 25000,
+  pong: 10000,
+  strategy: 'online',
+  manual: false,
+  websockets: true,
+  network: true,
+  transport: {},
+  queueSize: Infinity }
 }
 
 ////////////////

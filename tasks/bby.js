@@ -1,7 +1,7 @@
 exports.task = {
     name:          'bby',
     description:   'Refreshes Best Buy online availablity',
-    frequency:     60 * 1000,
+    frequency:     0,
     queue:         'stock',
     plugins:       [],
     pluginOptions: {},

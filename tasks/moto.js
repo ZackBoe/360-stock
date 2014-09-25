@@ -1,7 +1,7 @@
 exports.task = {
   name:          'moto',
   description:   'Refreshes Motorola online availablity',
-  frequency:     60 * 1000,
+  frequency:     0,
   queue:         'stock',
   plugins:       [],
   pluginOptions: {},
