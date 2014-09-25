@@ -14,21 +14,21 @@ exports.default = {
         }
     }
   }
-},
+}
 
 exports.production = {
   secrets: function(api){
     return {
-        kimono: function(api){ return { process.env.kimono },
-        bby: function(api){ return { process.env.bby },
+        kimono: process.env.kimono,
+        bby: process.env.bby,
         moto: {
-          request: function(api){ return { process.env.motorequest },
-          regex: function(api){ return { process.env.motoregex }
+          request: process.env.motorequest,
+          regex: process.env.motoregex
         },
         redis: {
-          url: function(api){ return { process.env.redisurl },
-          port: function(api){ return { process.env.redisport },
-          pass: function(api){ return { process.env.redispass }
+          url: process.env.redisurl,
+          port: process.env.redisport,
+          pass: process.env.redispass
         }
     }
   }
