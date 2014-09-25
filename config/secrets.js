@@ -19,16 +19,16 @@ exports.default = {
 exports.production = {
   secrets: function(api){
     return {
-        kimono: process.env.kimono,
-        bby: process.env.bby,
+        kimono: function(api){ return { process.env.kimono },
+        bby: function(api){ return { process.env.bby },
         moto: {
-          request: process.env.motorequest,
-          regex: process.env.motoregex
+          request: function(api){ return { process.env.motorequest },
+          regex: function(api){ return { process.env.motoregex }
         },
         redis: {
-          url: process.env.redisurl,
-          port: process.env.redisport,
-          pass: process.env.redispass
+          url: function(api){ return { process.env.redisurl },
+          port: function(api){ return { process.env.redisport },
+          pass: function(api){ return { process.env.redispass }
         }
     }
   }
