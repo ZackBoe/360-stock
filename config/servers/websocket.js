@@ -4,7 +4,7 @@ exports.default = {
   servers: {
     websocket: function(api){
       return {
-        enabled:          true,
+        enabled:          false,
         // you can pass a FQDN here, or function to be called / window object to be inspected
         clientUrl:        'window.location.origin',
         // Directory to render client-side JS.

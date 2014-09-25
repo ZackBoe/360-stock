@@ -48,7 +48,7 @@ exports.default = {
       startingChatRooms: {
         // format is {roomName: {authKey, authValue}}
         //'secureRoom': {authorized: true},
-        'stock': {}
+        // 'stock': {}
       }
     }
   }
@@ -60,9 +60,9 @@ exports.test = {
       id: 'test-server',
       developmentMode: true,
       startingChatRooms: {
-        'stock': {},
-        'otherRoom': {},
-        'secureRoom': {authorized: true}
+        // 'stock': {},
+        // 'otherRoom': {},
+        // 'secureRoom': {authorized: true}
       },
       developmentMode: true
     }

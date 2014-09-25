@@ -7,17 +7,10 @@ exports.task = {
   pluginOptions: {},
 
   run: function(api, params, next){
-    api.chatRoom.broadcast({room: 'stock'}, 'stock', 'refresh');
+    // api.chatRoom.broadcast({room: 'stock'}, 'stock', 'refresh');
     api.tasks.enqueue('google', 'stock', function(err, toRun){  });
     api.tasks.enqueue('moto', 'stock', function(err, toRun){  });
     api.tasks.enqueue('bby', 'stock', function(err, toRun){  });
     next(true, null);
   }
 };
-
-
-//TODO: proper error handling re:google ENOTFOUND (shitty network?)
-//TODO: desktop notifications?
-//TODO: heroku websockets?
-//TODO: links to stock object
-//TODO: slap a frontend on it, call it a day, sleep. 
