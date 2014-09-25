@@ -18,4 +18,6 @@ exports.task = {
 
 //TODO: proper error handling re:google ENOTFOUND (shitty network?)
 //TODO: desktop notifications?
-//TODO: cleanup and commit ffs
+//TODO: heroku websockets?
+//TODO: links to stock object
+//TODO: slap a frontend on it, call it a day, sleep. 

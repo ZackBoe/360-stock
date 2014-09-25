@@ -16,7 +16,7 @@ action.outputExample = {
     },
     moto: {
       black: { available: false },
-      silver: { available: false }
+      stone: { available: false }
     },
     bby: {
       black:{
@@ -55,8 +55,8 @@ action.run = function(api, connection, next){
         connection.response.stock.moto.black =  { available: resp, updatedAt: createdAt }
     });
 
-    api.cache.load('moto_silver', function(err, resp, expireTimestamp, createdAt, readAt){
-        connection.response.stock.moto.silver =  { available: resp, updatedAt: createdAt }
+    api.cache.load('moto_stone', function(err, resp, expireTimestamp, createdAt, readAt){
+        connection.response.stock.moto.stone =  { available: resp, updatedAt: createdAt }
     });
 
     api.cache.load('bby_black', function(err, resp, expireTimestamp, createdAt, readAt){
@@ -64,7 +64,11 @@ action.run = function(api, connection, next){
     });
 
     api.cache.load('bby_silver', function(err, resp, expireTimestamp, createdAt, readAt){
-        connection.response.stock.bby.silver =  { available: resp, updatedAt: createdAt }
+      connection.response.stock.bby.silver =  { available: resp, updatedAt: createdAt }
+    });
+
+    api.cache.load('bby_stone', function(err, resp, expireTimestamp, createdAt, readAt){
+        connection.response.stock.bby.stone =  { available: resp, updatedAt: createdAt }
         next(connection, true);
     });
 
