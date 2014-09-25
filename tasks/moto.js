@@ -9,7 +9,7 @@ exports.task = {
   run: function(api, params, next){
     var request = require('request');
 
-    request(api.config.secrets.moto.request, function (error, response, body) {
+    request({url:api.config.secrets.moto.url, qs:{cid: 'moto360-pdp-hero'}}, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         var cleaned = body.replace(api.config.secrets.moto.regex);
         data = JSON.parse(cleaned);
