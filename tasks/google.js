@@ -9,7 +9,7 @@ exports.task = {
     run: function(api, params, next){
         var request = require('request');
 
-        request({url:'https://www.kimonolabs.com/api/6uag53ws', qs:{apikey:api.config.secrets.kimono}}, function (error, response, body) {
+        request({url:'https://www.kimonolabs.com/api/6uag53ws', qs:{apikey:process.env.kimono}}, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 data = JSON.parse(body);
                 if(data.results[360][0].price['class'].indexOf('disabled') > -1){
@@ -21,7 +21,7 @@ exports.task = {
         })
 
 
-        request({url:'https://www.kimonolabs.com/api/byb181li', qs:{apikey:api.config.secrets.kimono}}, function (error, response, body) {
+        request({url:'https://www.kimonolabs.com/api/byb181li', qs:{apikey:process.env.kimono}}, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 data = JSON.parse(body);
                 if(data.results[360][0].price['class'].indexOf('disabled') > -1){

@@ -14,9 +14,9 @@ exports.default = {
     //   package: 'fakeredis',
 
       package: 'redis',
-      host: api.config.secrets.redis_url,
-      port: api.config.secrets.redis_port,
-      password: api.config.secrets.redis_pass,
+      host: process.env.redisurl,
+      port: process.env.redisport,
+      password: process.env.redispass,
       options: null,
       database: 0
 
