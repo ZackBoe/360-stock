@@ -3,6 +3,7 @@ exports.default = {
     return {
         kimono: api.config.keys.kimono,
         bby: api.config.keys.bby,
+        bbyLocal: api.config.keys.bbyLocal,
         moto: {
           url: api.config.keys.moto.url,
           regex: api.config.keys.moto.regex
@@ -21,6 +22,7 @@ exports.production = {
     return {
         kimono: process.env.kimono,
         bby: process.env.bby,
+        bbyLocal: process.env.bbyLocal,
         moto: {
           url: process.env.motourl,
           regex: process.env.motoregex
