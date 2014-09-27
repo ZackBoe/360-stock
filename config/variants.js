@@ -5,9 +5,6 @@ exports.default = {
         black: {
           link: 'http://www.bestbuy.com/site/motorola-moto-360-smart-watch-for-android-devices-4-3-or-higher-black-leather/8307152.p'
         },
-        silver: {
-          link: 'http://www.bestbuy.com/site/motorola-moto-360-smart-watch-for-android-devices-4-3-or-higher-gray-leather/8307143.p'
-        },
         stone: {
           link: 'http://www.bestbuy.com/site/motorola-moto-360-smart-watch-for-android-devices-4-3-or-higher-stone-leather/9169039.p'
         }

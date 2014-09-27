@@ -25,7 +25,7 @@ action.outputExample = {
           onlineAvailability: false
         }
       },
-      silver:{
+      stone:{
         available: {
           inStoreAvailability: false,
           onlineAvailability: false
@@ -61,10 +61,6 @@ action.run = function(api, connection, next){
 
     api.cache.load('bby_black', function(err, resp, expireTimestamp, createdAt, readAt){
         connection.response.stock.bby.black =  { available: resp, link: api.config.variants.bby.black.link, updatedAt: createdAt }
-    });
-
-    api.cache.load('bby_silver', function(err, resp, expireTimestamp, createdAt, readAt){
-      connection.response.stock.bby.silver =  { available: resp, link: api.config.variants.bby.silver.link, updatedAt: createdAt }
     });
 
     api.cache.load('bby_stone', function(err, resp, expireTimestamp, createdAt, readAt){
