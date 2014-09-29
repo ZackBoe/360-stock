@@ -1,8 +1,8 @@
 {
-  "author": "YOU <YOU@example.com>",
-  "name": "my_actionhero_project",
-  "description": "my actionhero project",
-  "version": "0.0.1",
+  "author": "Zack Boehm <git@zackboehm.com>",
+  "name": "360-Stock",
+  "description": "360 Stock Availablity Checker",
+  "version": "1.0.0",
   "engines": {
     "node": ">=0.10.0"
   },
