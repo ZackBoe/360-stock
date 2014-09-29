@@ -190,7 +190,7 @@ html, body { position: relative; margin: 0; height: 100%; background: floralwhit
 .localStores { padding: 0; }
 .localStores li { list-style: none; }
 
-.twitter { margin-top: 55px; }
+.twitter { margin-top: 55px; position: absolute; width: 100%; }
 
 .avail { background: -webkit-linear-gradient(180deg, #1D976C 10%, #93F9B9 90%); /* Chrome 10+, Saf5.1+ */ /* FF3.6+ */ /* IE10 */ /* Opera 11.10+ */ background: -webkit-linear-gradient(270deg, #1D976C 10%, #93F9B9 90%); background: linear-gradient(180deg, #1D976C 10%, #93F9B9 90%); /* W3C */ }
 
