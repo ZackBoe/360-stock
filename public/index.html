@@ -1,69 +1,115 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <meta http-equiv="content-language" content="en" />
-  <meta name="description" content="actionhero.js" />
-  <link rel="stylesheet" href="/public/css/actionhero.css" type="text/css">
-  <link rel="icon" href="/public/favicon.ico">
-  <title>actionhero.js</title>
-
-  <script src="/public/javascript/actionheroClient.js"></script>
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>
+        Is the 360 in stock?
+    </title>
+    <meta name="author" content="Zack Boehm">
+    <meta name="description" content="Check Moto 360 stock availability">
+    <!-- Twitter Stuffs -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@zackboehm" />
+    <meta name="twitter:title" content="Moto 360 Stock Checker" />
+    <meta name="twitter:description" content="Check availability of the Moto 360 from Motorola, Google, and Best Buy." />
+    <meta name="twitter:image" content="http://demandware.edgesuite.net/aahb_prd/on/demandware.static/Sites-Motorola_US-Site/Sites-motorola_master_catalog/en_US/v1411766849024/Products/Moto360/natural-stone/LightMetalStoneLeather_0000.png" />
+    <meta name="twitter:url" content="http://360.zackboe.co" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/i.min.css">
 </head>
-
 <body>
 
-  <div class="body_container">
-    <h1>actionhero.js</h1>
-    <img src="/public/logo/actionhero.png" width="400px"/>
-    <p><strong>Congratulations!</strong> Your actionhero server is working.</p>
-    <p>Try <a href="/chat.html">chat with websockets</a></p>
-    <p>Learn more @ <a href="http://www.actionherojs.com">www.actionherojs.com</a></p>
-  </div>
 
-  <div class="body_container">
-    <h2>Server Information:</h2>
-    <div class="server_info">
-      <div class="box"><div class="left">Server Name:</div><div class="right" id="serverName"></div></div>
-      <div class="box"><div class="left">API Version:</div><div class="right" id="serverVersion"></div></div>
+
+    <div id="watch">
+        <div id="screen">
+            <canvas id="cvs" width="200" height="200"></canvas>
+            <div id="available">Nope.
+            </div>
+            <div class="twitter">
+                <a class="twitter-share-button" href="https://twitter.com/share"
+                    data-url="http://360.zackboe.co"
+                    data-via="zackboehm"
+                    data-text="Is the Moto 360 in stock? Check availability from Motorola, Google, and Best Buy."
+                    data-hashtags="Moto360 #ItsTime"
+                    data-related="Motorola, ZackBoehm"
+                    data-count="none">
+                    Tweet
+                </a>
+            </div>
+
+        </div>
     </div>
-  </div>
 
-  <div class="body_container">
-    <h2>Actions:</h2>
-    <div class="server_info" id="actions">
 
+    <div class="title">
+        <h3>Is the 360 in stock?</h3>
     </div>
-  </div>
 
-  <script type="text/javascript">
-    var populateServerInfo = function(data){
-      if(data.serverInformation != null){
-        document.getElementById('serverVersion').innerHTML = data.serverInformation.apiVersion;
-        document.getElementById('serverName').innerHTML = data.serverInformation.serverName;
-      }
-      for(var actionName in data.documentation){
-        for(var version in data.documentation[actionName]){
-          var action = data.documentation[actionName][version];
-          var row = '';
-          row += '<div class="box box-tall"><div class="left">';
-          row += '<a href="/api/' + action.name + '?apiVersion=' + version + '">' + action.name + ' (v' + version + ')</a></div>';
-          row += '<div class="right">' + action.description;
-          row += '<br /><br />';
-          row += 'required: ' + action.inputs.required.join(',');
-          row += '<br />';
-          row += 'optional: ' + action.inputs.optional.join(',');
-          row += '</div></div>';
-          document.getElementById('actions').innerHTML += row;
-        }
-      }
-    }
+    <div class="info">
+        <p>Refreshes every 60 seconds. Not guaranteed to be correct or up to date.</p>
+    </div>
 
-    var client = new actionheroClient();
-    client.action('showDocumentation', function(err, data){
-      populateServerInfo(data)
-    });
-  </script>
+    <!--  ew, tables? tables. -->
+    <div class="flex-container">
+        <div class="flex-item">
+            <h3 class="retailer">Google Play</h3>
+            <table data-retailer="google">
+                <tr>
+                    <td><a href="http://bit.ly/360-google-black" target="_blank">Black</a></td><td><a href="http://bit.ly/360-google-silver" target="_blank">Silver</a></td>
+                </tr>
+                <tr data-stock-type="onlineAvailability">
+                    <td class="unavailable" data-model="black"></td><td class="unavailable" data-model="silver"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="flex-item">
+            <h3 class="retailer">Motorola</h3>
+            <table data-retailer="moto">
+                <tr>
+                    <td><a href="http://bit.ly/360-moto?black" target="_blank">Black</a></td> <td><a href="http://bit.ly/360-moto?stone" target="_blank">Stone</a></td>
+                </tr>
+                <tr data-stock-type="onlineAvailability">
+                    <td class="unavailable" data-model="black"></td><td class="unavailable" data-model="stone"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="flex-item">
+            <h3 class="retailer">Best Buy</h3>
+            <table data-retailer="bby">
+                <tr>
+                    <td class="where"></td>
+                    <td><a href="http://bit.ly/360-bby-black" target="_blank">Black</a></td><td><a href="http://bit.ly/360-bby-stone" target="_blank">Stone</a></td>
+                </tr>
+                <tr data-stock-type="onlineAvailability">
+                    <td>Online</td><td class="unavailable" data-model="black"></td><td class="unavailable" data-model="stone"></td>
+                </tr>
+                <tr data-stock-type="inStoreAvailability">
+                    <td>Ship to Store</td><td class="unavailable" data-model="black"></td><td class="unavailable" data-model="stone"></td>
+                </tr>
+                <tr data-stock-type="local">
+                    <td>Local Stock</td><td class="unknown" data-model="black"><ul class="localStores"></ul></td><td class="unknown" data-model="stone"><ul class="localStores"></ul></td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-</body>
-</html>
+    <div class="overflow">
+        <a href="https://code.google.com/p/chromium/issues/detail?id=175502">¯\_(ツ)_/¯</a>
+    </div>
+
+    <footer>
+        <p>Made by <a href="http://twitter.com/zackboehm">@ZackBoehm</a>.<br>
+            Desktop notifications are shown once per retailer/model, unless you <span class="hella"><a href="#">click here</a></span>.<br>
+            Data is not guaranteed to be an accurate portrayal of any retailers stock or availability. Best Buy's API is known to give inaccurate results. Please don't kill me if I get it wrong.<br>
+            The sweet CSS clock is modified from <a href="http://codepen.io/MarcMalignan/details/kfxnB">this pen</a> by <a href="http://www.marcmalignan.com/">Marc Malignan</a></p>
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="js/main.min.js"></script>
+        <script type="text/javascript">
+        window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+        </script>
+    </body>
+    </html>
