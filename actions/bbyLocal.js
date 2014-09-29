@@ -1,6 +1,6 @@
 exports.action = {
   name:                   'bbyLocal',
-  description:            'bbyLocal',
+  description:            'Returns local Best Buy stock availability',
   blockedConnectionTypes: [],
   outputExample:          {},
   matchExtensionMimeType: false,

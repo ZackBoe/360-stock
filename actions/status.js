@@ -3,7 +3,7 @@ var action = {};
 /////////////////////////////////////////////////////////////////////
 // metadata
 action.name = 'status';
-action.description = 'I will return some basic information about the API';
+action.description = 'Returns API Status';
 action.inputs = {
   'required' : [],
   'optional' : []
