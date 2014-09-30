@@ -19,7 +19,7 @@ exports.task = {
         else { api.cache.save('moto_stone', true); }
 
         // api.log(data.variants[1].availability);
-        if(data.variants[1].availability == 'NOT_AVAILABLE'){ api.cache.save('moto_black', true); }
+        if(data.variants[1].availability == 'IN_STOCK'){ api.cache.save('moto_black', true); }
         else { api.cache.save('moto_black', false); }
 
 
