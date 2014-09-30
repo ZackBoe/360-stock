@@ -14,11 +14,13 @@ exports.task = {
         var cleaned = body.replace(api.config.secrets.moto.regex);
         data = JSON.parse(cleaned);
 
-        if(data.variants[0].availability == 'NOT_AVAILABLE') api.cache.save('moto_stone', false);
-        else api.cache.save('moto_stone', true);
+        // api.log(data.variants[0].availability);
+        if(data.variants[0].availability == 'IN_STOCK'){ api.cache.save('moto_stone', true); }
+        else { api.cache.save('moto_stone', true); }
 
-        if(data.variants[1].availability == 'NOT_AVAILABLE') api.cache.save('moto_black', false);
-        else api.cache.save('moto_black', true);
+        // api.log(data.variants[1].availability);
+        if(data.variants[1].availability == 'NOT_AVAILABLE'){ api.cache.save('moto_black', true); }
+        else { api.cache.save('moto_black', false); }
 
 
         next(true, null);
