@@ -34,11 +34,11 @@ function refresh(){
     else geo();
 }
 
-function updateStock(retailer, model, stockType, available, storeName){
+function updateStock(retailer, model, stockType, available, stores){
   if(stockType == null) stockType = 'onlineAvailability';
   // console.log(retailer+":"+model+":"+stockType+":"+available);
   if(available){
-    if(storeName != null) $("[data-retailer='"+retailer+"']  [data-stock-type='"+stockType+"'] [data-model='"+model+"'] ul").append('<li>'+storeName+'</li>');
+    if(stores != null) $.each(stores, function(index, store){ $("[data-retailer='"+retailer+"']  [data-stock-type='"+stockType+"'] [data-model='"+model+"'] ul").append('<li>'+store+'</li>'); });
     $("[data-retailer='"+retailer+"']  [data-stock-type='"+stockType+"'] [data-model='"+model+"']").removeClass('unknown unavailable').addClass('available');
     $('#available').text('YES!');
     if (notificationsGranted == "granted" && seenNotifications.indexOf(retailer+model) < 0 ) {
@@ -62,7 +62,7 @@ function updateStock(retailer, model, stockType, available, storeName){
 }
 
 function getStock(){
-  $.getJSON( "api/stock", function( data ) {
+  $.getJSON( "http://360.zackboe.co/api/stock", function( data ) {
     console.log(data.stock);
     $.each(retailers, function(index, retailer){
       $.each(data.stock[retailer], function(index, models){
@@ -79,18 +79,33 @@ function getStock(){
 }
 
 function bbyLocal(lat,lng){
-  $.getJSON( "api/bbyLocal?lat="+lat+"&lng="+lng, function( data ) {
-    $.each(data.stores, function(sindex,store){ $.each(data.stores[sindex].products, function(pindex, product){
-
-      if(product.sku == 8307152) updateStock('bby','black','local',true,data.stores[sindex].name);
-      else updateStock('bby', 'black', 'local', false);
-
-      if(product.sku == 9169039) updateStock('bby','stone','local',true,data.stores[sindex].name);
-      else updateStock('bby', 'stone', 'local', false);
-
-      }) })
-    });
-  }
+  // updateStock('bby','black','local',true,data.stores[sindex].name);
+  stock = [];
+  stores = [];
+  stock['black'] = false;
+  stock['stone'] = false;
+  stores['black'] = [];
+  stores['stone'] = [];
+  $.getJSON( "http://360.zackboe.co/api/bbyLocal?lat="+lat+"&lng="+lng, function( data ) {
+    console.log(data.stores.length);
+    $.each(data.stores, function(sindex,store){
+      $.each(data.stores[sindex].products, function(pindex, product){
+        if(product.sku == 8307152){
+          stock['black'] = true;
+          stores['black'].push(data.stores[sindex].name);
+        }
+        if(product.sku == 9169039){
+          stock['stone'] = true;
+          stores['stone'].push(data.stores[sindex].name);
+        }
+      })
+      if (sindex == data.stores.length -1){
+        updateStock('bby', 'black', 'local', stock['black'], stores['black']);
+        updateStock('bby', 'stone', 'local', stock['stone'], stores['stone']);
+      }
+    })
+  });
+}
 
 function geo(){
     if ("geolocation" in navigator) {
