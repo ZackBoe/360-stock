@@ -87,7 +87,6 @@ function bbyLocal(lat,lng){
   stores['black'] = [];
   stores['stone'] = [];
   $.getJSON( "http://360.zackboe.co/api/bbyLocal?lat="+lat+"&lng="+lng, function( data ) {
-    console.log(data.stores.length);
     $.each(data.stores, function(sindex,store){
       $.each(data.stores[sindex].products, function(pindex, product){
         if(product.sku == 8307152){
