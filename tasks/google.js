@@ -20,6 +20,16 @@ exports.task = {
             else { api.log('err'+error); api.log('res'+response); api.log('body'+body);  }
         })
 
+      request({url:'https://www.kimonolabs.com/api/467e2i2c', qs:{apikey:api.config.secrets.kimono}}, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+              data = JSON.parse(body);
+              if(data.results[360][0].price['class'].indexOf('disabled') > -1){
+                  api.cache.save('google_stone', false);
+              }
+              else api.cache.save('google_stone', true);
+          }
+          else { api.log('err'+error); api.log('res'+response); api.log('body'+body);  }
+      })
 
         request({url:'https://www.kimonolabs.com/api/byb181li', qs:{apikey:api.config.secrets.kimono}}, function (error, response, body) {
             if (!error && response.statusCode == 200) {

@@ -16,6 +16,9 @@ exports.default = {
         black: {
           link: 'https://play.google.com/store/devices/details?id=motorola_moto_360_leather_black'
         },
+        stone: {
+          link: 'https://play.google.com/store/devices/details/Moto_360_Stone_Leather?id=motorola_moto_360_leather_stone'
+        },
         silver: {
           link: 'https://play.google.com/store/devices/details/Moto_360_Gray_Leather?id=motorola_moto_360_leather_gray'
         }

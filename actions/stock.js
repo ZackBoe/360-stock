@@ -12,7 +12,8 @@ action.blockedConnectionTypes = [];
 action.outputExample = {
     google: {
       black: { available: false },
-      silver: { available: false }
+      silver: { available: false },
+      stone: { available: false }
     },
     moto: {
       black: { available: false },
@@ -45,6 +46,10 @@ action.run = function(api, connection, next){
 
     api.cache.load('google_black', function(err, resp, expireTimestamp, createdAt, readAt){
         connection.response.stock.google.black = { available: resp, link: api.config.variants.google.black.link, updatedAt: createdAt }
+    });
+
+    api.cache.load('google_stone', function(err, resp, expireTimestamp, createdAt, readAt){
+        connection.response.stock.google.stone =  { available: resp, link: api.config.variants.google.stone.link, updatedAt: createdAt }
     });
 
     api.cache.load('google_silver', function(err, resp, expireTimestamp, createdAt, readAt){
